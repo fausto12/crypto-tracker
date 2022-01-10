@@ -20,7 +20,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">CryptoNews</a>
+          <a class="navbar-brand" href="{% url 'home' %}">CryptoNews</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -35,18 +35,20 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{% url 'prices' %}">Prices</a>
               </li>
             </ul>
-            <form class="d-flex">
+            <form class="d-flex" method="POST" action="{% url 'prices' %}">
+              {% csrf_token %}
               <input
                 class="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="Look up crypto"
                 aria-label="Search"
+                name="quote"
               />
               <button class="btn btn-outline-success" type="submit">
-                Search
+                Lookup
               </button>
             </form>
           </div>
