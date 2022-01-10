@@ -1,3 +1,27 @@
-{% extends 'base.html' %} {% block content %}
-<h6>{{ crypto }}</h6>
+{% extends 'base.html' %}
+{% block content %} 
+
+  {% if notfound %}
+    {{notfound}}
+  {% else %}
+    {% for key,value in crypto.DISPLAY.items %}
+
+    <div class="card" style="width: 18rem;">
+      <img src="https://images.unsplash.com/photo-1631897641792-cdf65cceda02?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">{{ key }}</h4>
+        
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Price :</strong>{{value.USD.PRICE}}</li>
+        <li class="list-group-item"><strong>Day High :</strong>{{value.USD.HIGHDAY }} </li>
+        <li class="list-group-item"><strong>Day Low :</strong>{{ value.USD.LOWDAY }}</li>
+        <li class="list-group-item"><strong>Market Cap :</strong>{{ value.USD.MKTCAP}}</li>
+      </ul>
+      
+    </div>
+
+      
+    {% endfor %}
+{% endif %}
 {% endblock content %}
