@@ -4,6 +4,9 @@
   {% if notfound %}
     {{notfound}}
   {% else %}
+    {% if crypto.Response %}
+        sorry, [ {{quote}} ] does not exist. Please try again
+    {% endif %}
     {% for key,value in crypto.DISPLAY.items %}
 
     <div class="card" style="width: 18rem;">
